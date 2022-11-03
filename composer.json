@@ -1,0 +1,37 @@
+{
+    "name": "perspective/module-store-review",
+    "version": "0.1.0",
+    "description": "Store Review module",
+    "type": "magento2-module",
+    "require": {
+        "magento/framework": ">=102",
+        "perspective/module-review-tree": "*"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "phpunit/phpunit": "^9.5"
+    },
+    "license": [
+        "Proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "src/StoreReview/registration.php"
+        ],
+        "psr-4": {
+            "Perspective\\StoreReview\\": "src/StoreReview/"
+        }
+    },
+    "repositories": {
+        "0": {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "magento/composer-dependency-version-audit-plugin": true,
+            "magento/magento-composer-installer": false
+        }
+    }
+}

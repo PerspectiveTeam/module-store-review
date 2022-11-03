@@ -1,0 +1,28 @@
+input StoreReviewRatingInput @doc(description: "Contains the reviewer's rating for a single aspect of a review.") {
+    id: String! @doc(description: "An encoded rating ID.")
+    value_id: String! @doc(description: "An encoded rating value ID.")
+}
+
+input CreateStoreReviewInput {
+    parent_id: Int @doc(description: "The ID of the review in which this review is a reply, if applicable.")
+    nickname: String @doc(description: "The customer's nickname.")
+    summary: String @doc(description: "The summary (title) of the review.")
+    text: String! @doc(description: "The review text.")
+    ratings: [StoreReviewRatingInput!]! @doc(description: "The ratings details by category. For example, Price: 5 stars, Quality: 4 stars, etc.")
+}
+
+type StoreReview {
+    parent_id: Int @doc(description: "The ID of the review in which this review is a reply, if applicable.")
+    summary: String! @doc(description: "The summary (title) of the review.")
+    nickname: String! @doc(description: "The customer's nickname. Defaults to the customer name, if logged in.")
+    text: String! @doc(description: "The review text.")
+    created_at: String! @doc(description: "The date the review was created.")
+}
+
+type CreateStoreReviewOutput {
+    review: StoreReview! @doc(description: "The created store review.")
+}
+
+type Mutation {
+    createStoreReview(input: CreateStoreReviewInput!): CreateStoreReviewOutput! @resolver(class: "Perspective\\StoreReview\\Model\\Resolver\\CreateStoreReview")
+}

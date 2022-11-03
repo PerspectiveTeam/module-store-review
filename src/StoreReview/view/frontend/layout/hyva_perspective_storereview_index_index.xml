@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block name="review_list.js"
+                   class="Magento\Framework\View\Element\Template"
+                   template="Perspective_StoreReview::hyva/scripts/list.phtml"/>
+            <block name="review_form.js"
+                   template="Perspective_StoreReview::hyva/scripts/form.phtml"/>
+        </referenceContainer>
+
+        <referenceBlock name="review_list" template="Perspective_ReviewTree::hyva/product/view/list.phtml">
+            <block name="review_list.item" as="item"
+                   class="Magento\Framework\View\Element\Template"
+                   template="Perspective_StoreReview::hyva/item.phtml">
+                <block name="review_list.item.form" as="form"
+                       class="Magento\Review\Block\Form"
+                       template="Perspective_StoreReview::hyva/form.phtml"/>
+            </block>
+        </referenceBlock>
+
+        <referenceBlock name="review_form" template="Perspective_StoreReview::hyva/form.phtml"/>
+    </body>
+</page>

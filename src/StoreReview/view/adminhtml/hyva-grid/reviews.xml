@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+    <source>
+        <arrayProvider>Perspective\StoreReview\Model\Backend\ReviewsArrayProvider</arrayProvider>
+    </source>
+    <columns>
+        <include>
+            <column name="review_id" label="ID" />
+            <column name="created_at" label="Created" />
+            <column name="status" label="Status" source="Magento\Review\Ui\Component\Listing\Columns\Status" />
+            <column name="title" label="Subject" />
+            <column name="detail" label="Review" />
+            <column name="nickname" label="Nickname" />
+            <column name="customer_id" label="Customer" />
+        </include>
+    </columns>
+    <navigation>
+        <sorting>
+            <defaultSortByColumn>created_at</defaultSortByColumn>
+            <defaultSortDirection>desc</defaultSortDirection>
+        </sorting>
+        <filters>
+            <filter column="status" source="Magento\Review\Ui\Component\Listing\Columns\Status" />
+        </filters>
+    </navigation>
+    <massActions idColumn="review_id" idsParam="reviews">
+        <action id="approve" label="Approve" url="perspective_storereview/reviews/massUpdateStatus"/>
+        <action id="delete" label="Delete" url="perspective_storereview/reviews/massDelete" requireConfirmation="true"/>
+    </massActions>
+</grid>

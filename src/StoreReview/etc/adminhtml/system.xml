@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="perspective_storereview" sortOrder="100" showInWebsite="1" showInStore="1" showInDefault="1"
+                 translate="label">
+            <label>Store Review</label>
+            <tab>perspective</tab>
+            <resource>Perspective_StoreReview::settings</resource>
+            <group id="general" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                <label>General</label>
+                <field id="enable" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
+                       translate="label">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="guest_allow_to_write" type="select" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1"
+                       translate="label">
+                    <label>Allow Guests to Write Reviews</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="perspective_storereview/general/enable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="infinite_scroll" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1"
+                   translate="label">
+                <label>Infinite Scroll</label>
+                <depends>
+                    <field id="perspective_storereview/general/enable">1</field>
+                </depends>
+                <field id="enable" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
+                       translate="label">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="initial_render_size" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1" translate="label">
+                    <label>Initial Render Size</label>
+                    <validate>required-entry validate-digits</validate>
+                    <depends>
+                        <field id="perspective_storereview/infinite_scroll/enable">1</field>
+                    </depends>
+                </field>
+                <field id="items_per_fetch" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
+                       showInStore="1" translate="label">
+                    <label>Items Per Fetch</label>
+                    <validate>required-entry validate-digits</validate>
+                    <depends>
+                        <field id="perspective_storereview/infinite_scroll/enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
