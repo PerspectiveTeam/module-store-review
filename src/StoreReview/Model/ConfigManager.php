@@ -26,6 +26,11 @@ class ConfigManager
         return (bool)$this->getConfig(self::GROUP_GENERAL, 'enable');
     }
 
+    public function getDepthLimit(): ?int
+    {
+        return (int)$this->getConfig(self::GROUP_GENERAL, 'depth_limit');
+    }
+
     public function isGuestAllowToWrite(): bool
     {
         return (bool)$this->getConfig(self::GROUP_GENERAL, 'guest_allow_to_write');

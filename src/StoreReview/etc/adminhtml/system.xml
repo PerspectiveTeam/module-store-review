@@ -22,6 +22,11 @@
                         <field id="perspective_storereview/general/enable">1</field>
                     </depends>
                 </field>
+                <field id="depth_limit" type="text" sortOrder="30" showInWebsite="1" showInStore="1" showInDefault="1"
+                       translate="label">
+                    <label>Depth Limit</label>
+                    <validate>required-entry validate-digits</validate>
+                </field>
             </group>
             <group id="infinite_scroll" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1"
                    translate="label">

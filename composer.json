@@ -1,11 +1,11 @@
 {
     "name": "perspective/module-store-review",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Store Review module",
     "type": "magento2-module",
     "require": {
         "magento/framework": ">=102",
-        "perspective/module-review-tree": "*"
+        "perspective/module-review-tree": ">=0.1.1"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",

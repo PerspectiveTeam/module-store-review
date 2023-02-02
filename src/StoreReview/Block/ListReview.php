@@ -13,8 +13,6 @@ use Perspective\StoreReview\Model\ConfigManager;
 class ListReview extends Template
 {
 
-    protected ?int $storeId = null;
-
     protected ?ReviewTreeCollection $reviewsCollection = null;
 
     public function __construct(
@@ -25,6 +23,11 @@ class ListReview extends Template
         array                                        $data = []
     ) {
         parent::__construct($context, $data);
+    }
+
+    public function getDepthLimit(): int
+    {
+        return $this->configManager->getDepthLimit() ?? 1;
     }
 
     public function isInfiniteScrollEnabled(): bool
@@ -44,11 +47,11 @@ class ListReview extends Template
 
     public function getEntityId(): int
     {
-        if (null === $this->storeId) {
-            $this->storeId = $this->storeManager->getStore()->getId();
+        if (!$this->hasData('entity_id')) {
+            $this->setData('entity_id', $this->storeManager->getStore()->getId());
         }
 
-        return $this->storeId;
+        return $this->getData('entity_id');
     }
 
     public function getReviewsCollection(): ReviewTreeCollection
